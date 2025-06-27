@@ -27,12 +27,13 @@ function displayResults(data, keyword) {
 }
 
 async function searchByRegion(region) {
+  const sort = document.getElementById('sortSelect').value;
   const keyword = region + ' 치킨맛집';
   showLoading(true);
   showResults(true);
   resultsTitle.textContent = `"${keyword}" 검색 결과`;
   try {
-    const res = await fetch(`/api/naver-search?query=${encodeURIComponent(keyword)}&display=10&start=1`);
+    const res = await fetch(`/api/naver-search?query=${encodeURIComponent(keyword)}&display=10&start=1&sort=${sort}`);
     const data = await res.json();
     displayResults(data, keyword);
   } catch (e) {
