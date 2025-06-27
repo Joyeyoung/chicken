@@ -1,7 +1,3 @@
-// 네이버 API 설정
-const CLIENT_ID = 'L2TR6oM5srkXUX20MNpz';
-const CLIENT_SECRET = '2jw33LqmYA';
-
 // DOM 요소들
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
