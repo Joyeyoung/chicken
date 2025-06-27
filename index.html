@@ -3,90 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>치킨 트렌드 검색</title>
+    <title>치킨 검색 - 네이버 블로그 검색</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="header-content">
-                <h1 class="logo">
-                    <i class="fas fa-chicken"></i>
-                    치킨 트렌드
-                </h1>
-                <p class="subtitle">네이버 검색 API로 실시간 치킨 트렌드를 확인하세요</p>
-            </div>
-        </header>
-
-        <main class="main">
-            <section class="search-section">
+        <header class="hero">
+            <div class="hero-content">
+                <h1><i class="fas fa-search"></i> 치킨 검색</h1>
+                <p class="hero-subtitle">네이버 블로그에서 치킨 관련 정보를 검색해보세요</p>
+                
                 <div class="search-container">
                     <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="치킨 관련 키워드를 입력하세요 (예: 치킨, 후라이드, 양념치킨...)" />
-                        <button id="searchBtn" class="search-btn">
+                        <input type="text" id="searchInput" placeholder="치킨 관련 블로그를 검색해보세요" autocomplete="off">
+                        <button id="searchBtn">
                             <i class="fas fa-search"></i>
-                            검색
                         </button>
                     </div>
+                    
                     <div class="quick-search">
-                        <span class="quick-label">빠른 검색:</span>
-                        <button class="quick-btn" data-keyword="치킨">치킨</button>
+                        <span>빠른 검색:</span>
                         <button class="quick-btn" data-keyword="후라이드치킨">후라이드치킨</button>
                         <button class="quick-btn" data-keyword="양념치킨">양념치킨</button>
                         <button class="quick-btn" data-keyword="치킨맛집">치킨맛집</button>
                         <button class="quick-btn" data-keyword="치킨배달">치킨배달</button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </header>
 
-            <section class="results-section" id="resultsSection" style="display: none;">
-                <div class="results-header">
-                    <h2 id="resultsTitle">검색 결과</h2>
-                    <div class="results-info">
-                        <span id="resultsCount">0</span>개의 결과
+        <section class="trends-section">
+            <h2>인기 검색어</h2>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">
+                        <i class="fas fa-utensils"></i>
                     </div>
+                    <h3>후라이드치킨</h3>
+                    <p>바삭한 후라이드치킨 맛집과 레시피</p>
                 </div>
-                <div class="loading" id="loading" style="display: none;">
-                    <div class="spinner"></div>
-                    <p>검색 중...</p>
-                </div>
-                <div class="results-container" id="resultsContainer">
-                    <!-- 검색 결과가 여기에 표시됩니다 -->
-                </div>
-            </section>
-
-            <section class="trends-section">
-                <h2>인기 치킨 키워드</h2>
-                <div class="trends-grid">
-                    <div class="trend-card">
+                <div class="trend-card">
+                    <div class="trend-icon">
                         <i class="fas fa-fire"></i>
-                        <h3>후라이드치킨</h3>
-                        <p>클래식한 맛의 대표</p>
                     </div>
-                    <div class="trend-card">
-                        <i class="fas fa-star"></i>
-                        <h3>양념치킨</h3>
-                        <p>매콤달콤한 인기 메뉴</p>
-                    </div>
-                    <div class="trend-card">
-                        <i class="fas fa-heart"></i>
-                        <h3>치킨맛집</h3>
-                        <p>최고의 치킨집 찾기</p>
-                    </div>
-                    <div class="trend-card">
-                        <i class="fas fa-motorcycle"></i>
-                        <h3>치킨배달</h3>
-                        <p>빠른 배달 서비스</p>
-                    </div>
+                    <h3>양념치킨</h3>
+                    <p>매콤달콤한 양념치킨 추천</p>
                 </div>
-            </section>
-        </main>
+                <div class="trend-card">
+                    <div class="trend-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>치킨맛집</h3>
+                    <p>인기 치킨맛집 리스트</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3>치킨배달</h3>
+                    <p>빠른 배달 치킨 추천</p>
+                </div>
+            </div>
+        </section>
 
-        <footer class="footer">
-            <p>&copy; 2024 치킨 트렌드 검색. 네이버 검색 API를 활용하여 제작되었습니다.</p>
-        </footer>
+        <section id="resultsSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2 id="resultsTitle">검색 결과</h2>
+                <div class="results-info">
+                    <span id="resultsCount">0</span>개의 결과
+                </div>
+            </div>
+            
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>검색 중...</p>
+            </div>
+            
+            <div id="resultsContainer" class="results-container">
+                <!-- 검색 결과가 여기에 표시됩니다 -->
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
