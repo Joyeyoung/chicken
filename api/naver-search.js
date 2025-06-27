@@ -4,8 +4,8 @@ export default async function handler(req, res) {
   }
 
   const { keyword } = req.body;
-  const CLIENT_ID = process.env.NAVER_CLIENT_ID;
-  const CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET;
+  const NAVER_CLIENT_ID = process.env.NAVER_CLIENT_ID;
+  const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET;
 
   if (!keyword) {
     return res.status(400).json({ error: '검색어(keyword) 파라미터가 필요합니다.' });
@@ -36,8 +36,8 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Naver-Client-Id': CLIENT_ID,
-        'X-Naver-Client-Secret': CLIENT_SECRET,
+        'X-Naver-Client-Id': NAVER_CLIENT_ID,
+        'X-Naver-Client-Secret': NAVER_CLIENT_SECRET,
       },
       body: JSON.stringify(body),
     });
