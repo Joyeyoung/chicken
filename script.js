@@ -18,6 +18,8 @@ const loading = document.getElementById('loading');
 const resultsContainer = document.getElementById('resultsContainer');
 const trendCards = document.querySelectorAll('.trend-card');
 
+let chartInstance = null;
+
 async function searchChicken(query) {
     if (!query.trim()) {
         alert('검색어를 입력해주세요.');
