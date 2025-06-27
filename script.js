@@ -1,5 +1,3 @@
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
 const resultsSection = document.getElementById('resultsSection');
 const resultsTitle = document.getElementById('resultsTitle');
 const loading = document.getElementById('loading');
@@ -13,11 +11,12 @@ function showResults(show) {
   resultsSection.style.display = show ? 'block' : 'none';
 }
 
-function displayResults(data) {
+function displayResults(data, keyword) {
   if (!data.items || !Array.isArray(data.items)) {
     resultsContainer.innerHTML = `<div class="loading">검색 결과가 없습니다.</div>`;
     return;
   }
+  resultsTitle.textContent = `"${keyword}" 검색 결과`;
   resultsContainer.innerHTML = data.items.map(item => `
     <div class="result-item">
       <h3><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title.replace(/<[^>]*>/g, '')}</a></h3>
@@ -27,19 +26,14 @@ function displayResults(data) {
   `).join('');
 }
 
-async function searchBlog() {
-  const query = searchInput.value.trim();
-  if (!query) {
-    alert('검색어를 입력하세요!');
-    return;
-  }
+async function searchByKeyword(keyword) {
   showLoading(true);
   showResults(true);
-  resultsTitle.textContent = `"${query}" 검색 결과`;
+  resultsTitle.textContent = `"${keyword}" 검색 결과`;
   try {
-    const res = await fetch(`/api/naver-search?query=${encodeURIComponent(query)}&display=10&start=1`);
+    const res = await fetch(`/api/naver-search?query=${encodeURIComponent(keyword)}&display=10&start=1`);
     const data = await res.json();
-    displayResults(data);
+    displayResults(data, keyword);
   } catch (e) {
     resultsContainer.innerHTML = `<div class="loading">검색 중 오류가 발생했습니다.</div>`;
   } finally {
@@ -47,7 +41,9 @@ async function searchBlog() {
   }
 }
 
-searchBtn.addEventListener('click', searchBlog);
-searchInput.addEventListener('keypress', e => {
-  if (e.key === 'Enter') searchBlog();
+document.querySelectorAll('.keyword-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const keyword = card.dataset.keyword;
+    searchByKeyword(keyword);
+  });
 }); 
