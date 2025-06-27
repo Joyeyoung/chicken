@@ -45,6 +45,18 @@ async function searchChickenTrends(query) {
 
 // 결과 표시 함수
 function displayResults(items, query) {
+    if (!Array.isArray(items)) {
+        resultsCount.textContent = 0;
+        resultsContainer.innerHTML = `
+            <div class="error-message">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #e74c3c; margin-bottom: 20px;"></i>
+                <h3>검색 결과를 불러올 수 없습니다.</h3>
+                <p>API 키 또는 서버 설정을 확인해 주세요.</p>
+            </div>
+        `;
+        return;
+    }
+
     resultsCount.textContent = items.length;
     
     if (items.length === 0) {
