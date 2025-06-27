@@ -3,24 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>치킨 블로그 키워드 검색</title>
+  <title>지역별 치킨맛집 추천</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>치킨 블로그 키워드 검색</h1>
-      <p>아래 키워드를 클릭하면 관련 블로그 글을 볼 수 있습니다!</p>
+      <h1>지역별 치킨맛집 추천</h1>
+      <p>원하는 지역을 선택하고 치킨맛집을 검색해보세요!</p>
     </header>
     <main>
-      <section class="keywords-section">
-        <div class="keywords-grid">
-          <div class="keyword-card" data-keyword="치킨">치킨</div>
-          <div class="keyword-card" data-keyword="양념치킨">양념치킨</div>
-          <div class="keyword-card" data-keyword="후라이드치킨">후라이드치킨</div>
-          <div class="keyword-card" data-keyword="치킨맛집">치킨맛집</div>
-          <div class="keyword-card" data-keyword="치킨배달">치킨배달</div>
-        </div>
+      <section class="region-section">
+        <select id="regionSelect">
+          <option value="">지역 선택</option>
+          <option value="서울">서울</option>
+          <option value="부산">부산</option>
+          <option value="대구">대구</option>
+          <option value="인천">인천</option>
+          <option value="광주">광주</option>
+          <option value="대전">대전</option>
+          <option value="울산">울산</option>
+          <option value="경기">경기</option>
+          <option value="강원">강원</option>
+          <option value="충북">충북</option>
+          <option value="충남">충남</option>
+          <option value="전북">전북</option>
+          <option value="전남">전남</option>
+          <option value="경북">경북</option>
+          <option value="경남">경남</option>
+          <option value="제주">제주</option>
+        </select>
+        <button id="regionSearchBtn">치킨맛집 검색</button>
       </section>
       <section id="resultsSection" style="display:none;">
         <h2 id="resultsTitle">검색 결과</h2>

@@ -26,7 +26,8 @@ function displayResults(data, keyword) {
   `).join('');
 }
 
-async function searchByKeyword(keyword) {
+async function searchByRegion(region) {
+  const keyword = region + ' 치킨맛집';
   showLoading(true);
   showResults(true);
   resultsTitle.textContent = `"${keyword}" 검색 결과`;
@@ -41,9 +42,11 @@ async function searchByKeyword(keyword) {
   }
 }
 
-document.querySelectorAll('.keyword-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const keyword = card.dataset.keyword;
-    searchByKeyword(keyword);
-  });
+document.getElementById('regionSearchBtn').addEventListener('click', () => {
+  const region = document.getElementById('regionSelect').value;
+  if (!region) {
+    alert('지역을 선택하세요!');
+    return;
+  }
+  searchByRegion(region);
 }); 
